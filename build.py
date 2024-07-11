@@ -1,3 +1,4 @@
+from enum import Enum
 import os
 import subprocess
 import shutil
@@ -14,6 +15,12 @@ IOS_DIR = os.path.join(PROJECT_DIR, "ios")
 ARCHIVE_PATH = os.path.join(BUILD_DIR, "ios/archive/Runner.xcarchive")
 # ios 在当前脚本目录下查找 ExportOptions.plist
 EXPORT_OPTIONS_PLIST = os.path.join(os.path.dirname(__file__), "ExportOptions.plist")
+
+# 定义一个枚举类
+class ENVIRONMENT(Enum):
+    test = '--dart-define=ENVIRONMENT=test'
+    pre = '--dart-define=ENVIRONMENT=pre'
+    rel = '--dart-define=ENVIRONMENT=rel'
 
 def run_command(command, cwd=None):
     """
@@ -45,13 +52,13 @@ def install_cocoapods():
     """
     run_command("pod install", cwd=IOS_DIR)
 
-def build_flutter_ipa():
+def build_flutter_ipa(environment: ENVIRONMENT):
     """
     构建iOS版本的Flutter项目，使用发布模式并禁用代码签名。
     """
-    run_command("flutter build ios --release --no-codesign", cwd=PROJECT_DIR)
+    run_command("flutter build ios --release --no-codesign %s" % (environment.value), cwd=PROJECT_DIR)
 
-def create_xcode_archive():
+def create_xcode_archive(environment: ENVIRONMENT):
     """
     创建Xcode归档文件并使用指定的ExportOptions.plist导出IPA文件。
     """
@@ -63,13 +70,18 @@ def create_xcode_archive():
     run_command(f"xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release archive -archivePath {ARCHIVE_PATH} -destination 'generic/platform=iOS'", cwd=PROJECT_DIR)
     run_command(f"xcodebuild -exportArchive -archivePath {ARCHIVE_PATH} -exportOptionsPlist {EXPORT_OPTIONS_PLIST} -exportPath {OUTPUT_DIR}", cwd=PROJECT_DIR)
 
-def build_flutter_apk():
+    # 重命名IPA文件
+    old_ipa_path = os.path.join(OUTPUT_DIR, 'CG钱包.ipa')
+    new_ipa_path = os.path.join(OUTPUT_DIR, 'CG钱包%s.ipa' % (environment.value))
+    os.rename(old_ipa_path, new_ipa_path)
+
+def build_flutter_apk(environment: ENVIRONMENT):
     """
     构建安卓版本的Flutter项目，使用发布模式。
     """
-    run_command("flutter build apk --release", cwd=PROJECT_DIR)
+    run_command("flutter build apk --release %s"  % (environment.value), cwd=PROJECT_DIR)
 
-def copy_apk_to_output():
+def copy_apk_to_output(environment: ENVIRONMENT):
     """
     将生成的APK复制到指定的输出目录。
     """
@@ -82,12 +94,16 @@ def copy_apk_to_output():
     
     # 检查APK文件是否存在
     if os.path.exists(apk_file):
-
         # 复制到输出目录
         shutil.copy(apk_file, OUTPUT_DIR)
         print(f"成功复制APK文件到 {OUTPUT_DIR}")
     else:
         raise Exception(f"找不到生成的APK文件: {apk_file}")
+    
+    # 重命名IPA文件
+    old_ipa_path = os.path.join(OUTPUT_DIR, 'app-release.apk')
+    new_ipa_path = os.path.join(OUTPUT_DIR, 'app-release%s.apk' % (environment.value))
+    os.rename(old_ipa_path, new_ipa_path)
 
 def main():
     """
@@ -98,13 +114,30 @@ def main():
         get_flutter_dependencies()
 
         install_cocoapods()
-        build_flutter_ipa()
-        create_xcode_archive()
-        print("成功创建IPA文件。")
 
-        build_flutter_apk()
-        copy_apk_to_output()
-        print("成功创建并复制APK文件。")
+        build_flutter_ipa(ENVIRONMENT.test)
+        create_xcode_archive(ENVIRONMENT.test)
+        print("成功创建IPA%s文件。" % (ENVIRONMENT.test.value))
+
+        build_flutter_ipa(ENVIRONMENT.pre)
+        create_xcode_archive(ENVIRONMENT.pre)
+        print("成功创建IPA%s文件。" % (ENVIRONMENT.pre.value))
+
+        build_flutter_ipa(ENVIRONMENT.rel)
+        create_xcode_archive(ENVIRONMENT.rel)
+        print("成功创建IPA%s文件。" % (ENVIRONMENT.rel.value))
+
+        build_flutter_apk(ENVIRONMENT.test)
+        copy_apk_to_output(ENVIRONMENT.test)
+        print("成功创建并复制APK%s文件。" % (ENVIRONMENT.test.value))
+
+        build_flutter_apk(ENVIRONMENT.pre)
+        copy_apk_to_output(ENVIRONMENT.pre)
+        print("成功创建并复制APK%s文件。" % (ENVIRONMENT.pre.value))
+
+        build_flutter_apk(ENVIRONMENT.rel)
+        copy_apk_to_output(ENVIRONMENT.rel)
+        print("成功创建并复制APK%s文件。" % (ENVIRONMENT.rel.value))
     except Exception as e:
         print(f"错误: {e}")
 
