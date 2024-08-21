@@ -11,7 +11,7 @@
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.cgwallet.app.cgwallet</key>
-		<string>cgnewdis</string>
+		<string>20240723</string>
 	</dict>
 	<key>signingCertificate</key>
 	<string>Apple Distribution</string>
@@ -20,7 +20,7 @@
 	<key>stripSwiftSymbols</key>
 	<true/>
 	<key>teamID</key>
-	<string>26TGJYLZH9</string>
+	<string>N93BC5TDK8</string>
 	<key>thinning</key>
 	<string>&lt;none&gt;</string>
 </dict>
