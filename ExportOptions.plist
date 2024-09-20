@@ -11,7 +11,7 @@
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.cgwallet.app.cgwallet</key>
-		<string>20240723</string>
+		<string>cgwalletAPNS_dis</string>
 	</dict>
 	<key>signingCertificate</key>
 	<string>Apple Distribution</string>

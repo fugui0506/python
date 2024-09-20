@@ -4,11 +4,11 @@ import subprocess
 import shutil
 
 # 设置 Flutter 项目路径
-PROJECT_DIR = os.path.expanduser("~/Documents/Projects/wallet-flutter-app-1.0.6")
+PROJECT_DIR = os.path.expanduser("~/Documents/Projects/cgwallet")
 # 项目的 Build 目录
 BUILD_DIR = os.path.join(PROJECT_DIR, "build")
 # 存放包的目录
-OUTPUT_DIR = os.path.expanduser("~/Documents/Outputs/wallet-flutter-app-1.0.6")
+OUTPUT_DIR = os.path.expanduser("~/Documents/Outputs/cgwallet")
 # ios 的路径
 IOS_DIR = os.path.join(PROJECT_DIR, "ios")
 # ios 配置文件的路径
@@ -71,8 +71,8 @@ def create_xcode_archive(environment: ENVIRONMENT):
     run_command(f"xcodebuild -exportArchive -archivePath {ARCHIVE_PATH} -exportOptionsPlist {EXPORT_OPTIONS_PLIST} -exportPath {OUTPUT_DIR}", cwd=PROJECT_DIR)
 
     # 重命名IPA文件
-    old_ipa_path = os.path.join(OUTPUT_DIR, 'CG钱包.ipa')
-    new_ipa_path = os.path.join(OUTPUT_DIR, 'CG钱包%s.ipa' % (environment.value))
+    old_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet.ipa')
+    new_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet%s.ipa' % (environment.value))
     os.rename(old_ipa_path, new_ipa_path)
 
 def build_flutter_apk(environment: ENVIRONMENT):
@@ -115,29 +115,14 @@ def main():
 
         install_cocoapods()
 
-        build_flutter_ipa(ENVIRONMENT.test)
-        create_xcode_archive(ENVIRONMENT.test)
-        print("成功创建IPA%s文件。" % (ENVIRONMENT.test.value))
-
         build_flutter_ipa(ENVIRONMENT.pre)
         create_xcode_archive(ENVIRONMENT.pre)
         print("成功创建IPA%s文件。" % (ENVIRONMENT.pre.value))
-
-        build_flutter_ipa(ENVIRONMENT.rel)
-        create_xcode_archive(ENVIRONMENT.rel)
-        print("成功创建IPA%s文件。" % (ENVIRONMENT.rel.value))
-
-        build_flutter_apk(ENVIRONMENT.test)
-        copy_apk_to_output(ENVIRONMENT.test)
-        print("成功创建并复制APK%s文件。" % (ENVIRONMENT.test.value))
 
         build_flutter_apk(ENVIRONMENT.pre)
         copy_apk_to_output(ENVIRONMENT.pre)
         print("成功创建并复制APK%s文件。" % (ENVIRONMENT.pre.value))
 
-        build_flutter_apk(ENVIRONMENT.rel)
-        copy_apk_to_output(ENVIRONMENT.rel)
-        print("成功创建并复制APK%s文件。" % (ENVIRONMENT.rel.value))
     except Exception as e:
         print(f"错误: {e}")
 
