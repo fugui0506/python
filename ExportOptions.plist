@@ -6,22 +6,36 @@
 	<true/>
 	<key>destination</key>
 	<string>export</string>
+
+	<!-- app-store：用于发布到 App Store。
+	ad-hoc：用于通过 Ad Hoc 分发应用。
+	enterprise：用于企业内部分发。
+	development：用于开发和调试。 -->
 	<key>method</key>
-	<string>release-testing</string>
+	<string>enterprise</string> 
+
+
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.cgwallet.app.cgwallet</key>
-		<string>cgwalletAPNS_dis</string>
+		<key>com.cgwallet.app.cgwallet100</key>
+		<string>cgpp</string>
 	</dict>
+
+	<!-- 常用名称 -->
 	<key>signingCertificate</key>
-	<string>Apple Distribution</string>
+	<string>iPhone Distribution: ZHSHOCK Technology Co.,Ltd.</string> 
+
 	<key>signingStyle</key>
 	<string>manual</string>
+
 	<key>stripSwiftSymbols</key>
 	<true/>
+
 	<key>teamID</key>
-	<string>N93BC5TDK8</string>
+	<string>FKT2MS2R6W</string>
+
 	<key>thinning</key>
 	<string>&lt;none&gt;</string>
+
 </dict>
 </plist>

@@ -24,11 +24,13 @@ class ENVIRONMENT(Enum):
     test = '--dart-define=ENVIRONMENT=test'
     pre = '--dart-define=ENVIRONMENT=pre'
     rel = '--dart-define=ENVIRONMENT=rel'
+    grey = '--dart-define=ENVIRONMENT=grey'
 
 class NAME(Enum):
     test = 'test'
     pre = 'pre'
     rel = 'rel'
+    grey = 'grey'
 
 def run_command(command, cwd=None):
     """
@@ -80,7 +82,7 @@ def create_xcode_archive():
 
     # 重命名IPA文件
     old_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet.ipa')
-    new_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s.ipa' % (NAME.pre.value))
+    new_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s.ipa' % (NAME.grey.value))
     os.rename(old_ipa_path, new_ipa_path)
 
 def build_flutter_apk(environment: ENVIRONMENT):
@@ -110,7 +112,7 @@ def copy_apk_to_output():
     
     # 重命名IPA文件
     old_apk_path = os.path.join(OUTPUT_DIR, 'app-release.apk')
-    new_apk_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s.apk' % (NAME.pre.value))
+    new_apk_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s.apk' % (NAME.grey.value))
     os.rename(old_apk_path, new_apk_path)
 
 def main():
@@ -123,13 +125,13 @@ def main():
 
         install_cocoapods()
 
-        build_flutter_ipa(ENVIRONMENT.pre)
+        build_flutter_ipa(ENVIRONMENT.grey)
         create_xcode_archive()
-        print("成功创建IPA%s文件。" % (ENVIRONMENT.pre.value))
+        print("成功创建IPA%s文件。" % (ENVIRONMENT.grey.value))
 
-        build_flutter_apk(ENVIRONMENT.pre)
+        build_flutter_apk(ENVIRONMENT.grey)
         copy_apk_to_output()
-        print("成功创建并复制APK%s文件。" % (ENVIRONMENT.pre.value))
+        print("成功创建并复制APK%s文件。" % (ENVIRONMENT.grey.value))
     except Exception as e:
         print(f"错误: {e}")
 

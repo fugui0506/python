@@ -80,7 +80,7 @@ def create_xcode_archive():
 
     # 重命名IPA文件
     old_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet.ipa')
-    new_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s_%s.ipa' % (NAME.rel.value, BUILD_TIME))
+    new_ipa_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s.ipa' % (NAME.rel.value))
     os.rename(old_ipa_path, new_ipa_path)
 
 def build_flutter_apk(environment: ENVIRONMENT):
@@ -110,7 +110,7 @@ def copy_apk_to_output():
     
     # 重命名IPA文件
     old_apk_path = os.path.join(OUTPUT_DIR, 'app-release.apk')
-    new_apk_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s_%s.apk' % (NAME.rel.value, BUILD_TIME))
+    new_apk_path = os.path.join(OUTPUT_DIR, 'cgwallet_%s.apk' % (NAME.rel.value))
     os.rename(old_apk_path, new_apk_path)
 
 def main():
