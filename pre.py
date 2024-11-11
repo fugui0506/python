@@ -5,11 +5,11 @@ import shutil
 from datetime import datetime
 
 # 设置 Flutter 项目路径
-PROJECT_DIR = os.path.expanduser("~/Documents/Projects/cgwallet")
+PROJECT_DIR = os.path.expanduser("~/Documents/Projects/wallet-flutter-app")
 # 项目的 Build 目录
 BUILD_DIR = os.path.join(PROJECT_DIR, "build")
 # 存放包的目录
-OUTPUT_DIR = os.path.expanduser("~/Documents/Outputs/cgwallet")
+OUTPUT_DIR = os.path.expanduser("~/Documents/Outputs/wallet-flutter-app")
 # ios 的路径
 IOS_DIR = os.path.join(PROJECT_DIR, "ios")
 # ios 配置文件的路径
