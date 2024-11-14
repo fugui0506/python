@@ -2,6 +2,7 @@
 from asyncio import subprocess
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
 
@@ -178,6 +179,15 @@ def build(work_path: str, envs: list[str]):
     ios_path = Path(work_path) / "ios"
     bild_path = Path(work_path) / "build"
     export_options_path = MAIN_PATH / "ExportOptions.plist"
+    yaml_path = Path(work_path) / "pubspec.yaml"
+
+    version = ''
+
+    with open(yaml_path, 'r') as file:
+        content = file.read()
+        match = re.search(r'version:\s*([^\s]+)', content)
+        if match:
+            version = match.group(1)
 
     run_command("flutter clean", cwd=work_path)
     run_command("flutter pub get", cwd=work_path)
@@ -196,12 +206,12 @@ def build(work_path: str, envs: list[str]):
 
         # 重命名 IPA 文件
         old_ipa_path = out_path / 'cgwallet.ipa'
-        new_ipa_path = out_path / f'cgwallet_{env}.ipa'
+        new_ipa_path = out_path / f'cgwallet_{env}_{version}.ipa'
         old_ipa_path.rename(new_ipa_path)
 
         run_command("flutter build apk -v --release %s"  % (environment), cwd=work_path)
         old_apk_path =  "app/outputs/flutter-apk/app-release.apk"
-        new_apk_path = out_path / f'cgwallet_{env}.apk'
+        new_apk_path = out_path / f'cgwallet_{env}_{version}.apk'
 
         shutil.copy(bild_path / old_apk_path, out_path / new_apk_path)
 
