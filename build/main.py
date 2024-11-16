@@ -3,10 +3,12 @@ from pathlib import Path
 import re
 import shutil
 from util import consol, json, cmd
+from tqdm import tqdm
 
 
 class Target:
-    def __init__(self, flutter_name: str, title: str, package: str, version: str, team: str, profile: str, signing: str, build: list[str]):
+    def __init__(self, name: str, flutter_name: str, title: str, package: str, version: str, team: str, profile: str, signing: str, build: list[str]):
+        self.name = name
         self.flutter_name = flutter_name
         self.title = title
         self.package = package
@@ -18,9 +20,8 @@ class Target:
 
 
 class Project:
-    def __init__(self, path: str, name: str, flutter_name: str, package: str, title: str, profile: str, signing: str, team: str):
+    def __init__(self, path: str, flutter_name: str, package: str, title: str, profile: str, signing: str, team: str):
         self.path = path
-        self.name = name
         self.flutter_name = flutter_name
         self.package = package
         self.title = title
@@ -97,13 +98,34 @@ async def build(path: Path, index: int):
     consol.succful(f"加载配置文件成功: {config_file}")
 
     # 项目目录
-    project_path = path / config.project.name
+    project_path = path / config.target.name
 
     if project_path.exists():
         shutil.rmtree(project_path)
+        consol.succful(f"删除文件夹成功: {project_path}")
 
     # 复制项目
-    shutil.copytree(Path(config.project.path), project_path)
+    consol.log(f"正在复制文件夹 {config.project.path} -> {project_path}")
+
+    files = list(Path(config.project.path).rglob('*'))
+    consol.log(f"文件总数: {len(files)}")
+    with tqdm(total=len(files), desc="Copying files") as pbar:
+        for item in files:
+            target_path = project_path / item.relative_to(config.project.path)
+
+            # 确保目标路径的父目录存在
+            if not target_path.parent.exists():
+                print(f"创建父目录: {target_path.parent}")
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+
+            if item.is_dir():
+                target_path.mkdir(parents=True, exist_ok=True)
+            else:
+                shutil.copy2(item, target_path)
+            pbar.update(1)
+
+    # shutil.copytree(Path(config.project.path), project_path)
+    consol.succful(f"文件夹复制成功: {project_path}")
 
     # 更新项目名称 和 版本号
     update_yaml(project_path, config)
@@ -177,7 +199,7 @@ async def build(path: Path, index: int):
 def update_assets(path: Path, config: BuildConfig):
     consol.log('正在更新资源文件...')
     stc_path = path / 'resource/assets'
-    dst_path = path / config.project.name / 'assets'
+    dst_path = path / config.target.name / 'assets'
 
     if dst_path.exists():
         consol.log('资源文件夹已存在，正在删除...')
@@ -220,7 +242,7 @@ def update_yaml(path: Path, config: BuildConfig):
 def update_android(path: Path, config: BuildConfig):
     """更新 Android 文件"""
     consol.log('正在更新 Android 文件...')
-    android_path = path / config.project.name / "android/app"
+    android_path = path / config.target.name / "android/app"
     kotlin_path = android_path / "src/main/kotlin"
 
     old_package_path = kotlin_path / Path(*config.project.package.split("."))
@@ -343,7 +365,7 @@ def update_dart(path: Path, config: BuildConfig):
 def update_ios(path: Path, config: BuildConfig):
     consol.log('正在更新 IOS 文件...')
 
-    ios_path = path / config.project.name / "ios"
+    ios_path = path / config.target.name / "ios"
     plist_path = ios_path / "Runner" / "Info.plist"
     pbxproj_path = ios_path / "Runner.xcodeproj" / "project.pbxproj"
 

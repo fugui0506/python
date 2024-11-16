@@ -1,5 +1,6 @@
 {
     "target": {
+        "name": "cgwallet100",
         "flutter_name": "wangfugui",
         "title": "王富贵钱包",
         "package": "com.flutter.app.cgwallet",
@@ -11,7 +12,6 @@
     },
     "project": {
         "path": "/Users/wangfugui/Documents/Projects/cgwallet100",
-        "name": "cgwallet100",
         "flutter_name": "cgwallet100",
         "title": "CG钱包",
         "package": "com.cgwallet.app.cgwallet100",
