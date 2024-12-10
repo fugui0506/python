@@ -1,0 +1,230 @@
+没有找到工作文件夹, 程序退出...
+没有找到工作文件夹, 程序退出...
+一共 3 个任务需要处理
+正在处理第 1 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/CGpay
+没有找到config.json配置文件, 跳过处理...
+正在处理第 2 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/.DS_Store
+不是文件夹, 跳过处理...
+正在处理第 3 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包
+加载配置文件成功: {'target': {'name': 'cgwallet100', 'flutter_name': 'wangfugui', 'title': '王富贵钱包', 'package': 'com.flutter.app.cgwallet', 'version': '6.1.1', 'team': 'N93BC5TDK8', 'profile': '20240723', 'signing': 'iPhone Distribution', 'build': ['test']}, 'project': {'path': '/Users/wangfugui/Documents/Projects/cgwallet100', 'flutter_name': 'cgwallet100', 'title': 'CG钱包', 'package': 'com.cgwallet.app.cgwallet100', 'team': 'N93BC5TDK8', 'profile': '20200806dev', 'signing': 'iPhone Developer'}}
+正在复制文件夹 /Users/wangfugui/Documents/Projects/cgwallet100 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+文件总数: 0
+文件夹复制成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在更新 YAML 文件...
+pubspec.yaml 文件不存在
+正在更新 Dart 文件...
+一共 3 个任务需要处理
+正在处理第 1 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/CGpay
+没有找到config.json配置文件, 跳过处理...
+正在处理第 2 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/.DS_Store
+不是文件夹, 跳过处理...
+正在处理第 3 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包
+加载配置文件成功: {'target': {'name': 'cgwallet100', 'flutter_name': 'wangfugui', 'title': '王富贵钱包', 'package': 'com.flutter.app.cgwallet', 'version': '6.1.1', 'team': 'N93BC5TDK8', 'profile': '20240723', 'signing': 'iPhone Distribution', 'build': ['test']}, 'project': {'path': '/Users/wangfugui/Documents/Projects/cgwallet100', 'flutter_name': 'cgwallet100', 'title': 'CG钱包', 'package': 'com.cgwallet.app.cgwallet100', 'team': 'N93BC5TDK8', 'profile': '20200806dev', 'signing': 'iPhone Developer'}}
+正在复制文件夹 /Users/wangfugui/Documents/Projects/cgwallet100 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+文件总数: 0
+文件夹复制成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在更新 YAML 文件...
+pubspec.yaml 文件不存在
+正在更新 Dart 文件...
+一共 3 个任务需要处理
+正在处理第 1 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/CGpay
+没有找到config.json配置文件, 跳过处理...
+正在处理第 2 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/.DS_Store
+不是文件夹, 跳过处理...
+正在处理第 3 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包
+加载配置文件成功: {'target': {'name': 'cgwallet100', 'flutter_name': 'wangfugui', 'title': '王富贵钱包', 'package': 'com.flutter.app.cgwallet', 'version': '6.1.1', 'team': 'N93BC5TDK8', 'profile': '20240723', 'signing': 'iPhone Distribution', 'build': ['test']}, 'project': {'path': '/Users/wangfugui/Documents/Projects/cgwallet100', 'flutter_name': 'cgwallet100', 'title': 'CG钱包', 'package': 'com.cgwallet.app.cgwallet100', 'team': 'N93BC5TDK8', 'profile': '20200806dev', 'signing': 'iPhone Developer'}}
+正在复制文件夹 /Users/wangfugui/Documents/Projects/cgwallet100 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+文件总数: 0
+文件夹复制成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在更新 YAML 文件...
+pubspec.yaml 文件不存在
+正在更新 Dart 文件...
+一共 3 个任务需要处理
+正在处理第 1 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/CGpay
+没有找到config.json配置文件, 跳过处理...
+正在处理第 2 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/.DS_Store
+不是文件夹, 跳过处理...
+正在处理第 3 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包
+加载配置文件成功: {'target': {'name': 'cgwallet100', 'flutter_name': 'wangfugui', 'title': '王富贵钱包', 'package': 'com.flutter.app.cgwallet', 'version': '6.1.1', 'team': 'N93BC5TDK8', 'profile': '20240723', 'signing': 'iPhone Distribution', 'build': ['test']}, 'project': {'path': '/Users/wangfugui/Documents/Projects/cgwallet100', 'flutter_name': 'cgwallet100', 'title': 'CG钱包', 'package': 'com.cgwallet.app.cgwallet100', 'team': 'N93BC5TDK8', 'profile': '20200806dev', 'signing': 'iPhone Developer'}}
+正在复制文件夹 /Users/wangfugui/Documents/Projects/cgwallet100 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+文件总数: 0
+文件夹复制成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在更新 YAML 文件...
+pubspec.yaml 文件不存在
+正在更新 Dart 文件...
+一共 3 个任务需要处理
+正在处理第 1 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/CGpay
+没有找到config.json配置文件, 跳过处理...
+正在处理第 2 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/.DS_Store
+不是文件夹, 跳过处理...
+正在处理第 3 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包
+加载配置文件成功: {'target': {'name': 'cgwallet100', 'flutter_name': 'wangfugui', 'title': '王富贵钱包', 'package': 'com.flutter.app.cgwallet', 'version': '6.1.1', 'team': 'N93BC5TDK8', 'profile': '20240723', 'signing': 'iPhone Distribution', 'build': ['test']}, 'project': {'path': '/Users/wangfugui/Documents/Projects/cgwallet100', 'flutter_name': 'cgwallet100', 'title': 'CG钱包', 'package': 'com.cgwallet.app.cgwallet100', 'team': 'N93BC5TDK8', 'profile': '20200806dev', 'signing': 'iPhone Developer'}}
+正在复制文件夹 /Users/wangfugui/Documents/Projects/cgwallet100 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+文件总数: 0
+文件夹复制成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在更新 YAML 文件...
+pubspec.yaml 文件不存在
+正在更新 Dart 文件...
+一共 3 个任务需要处理
+正在处理第 1 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/CGpay
+没有找到config.json配置文件, 跳过处理...
+正在处理第 2 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/.DS_Store
+不是文件夹, 跳过处理...
+正在处理第 3 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包
+加载配置文件成功: {'target': {'name': 'cgwallet100', 'flutter_name': 'wangfugui', 'title': '王富贵钱包', 'package': 'com.flutter.app.cgwallet', 'version': '6.1.1', 'team': 'N93BC5TDK8', 'profile': '20240723', 'signing': 'iPhone Distribution', 'build': ['test']}, 'project': {'path': '/Users/wangfugui/Documents/Projects/cgwallet', 'flutter_name': 'cgwallet100', 'title': 'CG钱包', 'package': 'com.cgwallet.app.cgwallet100', 'team': 'N93BC5TDK8', 'profile': '20200806dev', 'signing': 'iPhone Developer'}}
+正在复制文件夹 /Users/wangfugui/Documents/Projects/cgwallet -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+文件总数: 31190
+文件夹复制成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在更新 YAML 文件...
+已更新 /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/pubspec.yaml 文件中的 name 和 version
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/main.dart
+正在更新 Dart 文件...
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/time.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/urls.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/config.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/app.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/key.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/shard.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/middlewares/middleware_index.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/middlewares/middlewares.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/models/web_view_arguments.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/models/models.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/lang.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/lang_keys.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/my_lang.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/key_en.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/key_zh.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/common.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/my_colors.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/my_icons.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/my_styles.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/theme.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/me.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/base.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/auth.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/activity.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/category.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/swap.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/transfer.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/market.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/qichat.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/api.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/routes/my_routes.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/routes/routes.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/routes/my_pages.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/global/init.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/global/user.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/global/global.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/widgets.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/my_assets.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/my_audios.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/my_dialog.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/views/views.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/test/widget_test.dart
+正在更新 Android 文件...
+KT 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/android/app/src/main/kotlin/com/flutter/app/cgwallet/MainActivity.kt
+AndroidManifest.xml 包名已更新为 com.flutter.app.cgwallet
+build.gradle 包名已更新
+✅ Android 资源文件已更新 ....
+正在更新 IOS 文件...
+Info.plist 包名已更新为 com.flutter.app.cgwallet
+project.pbxproj 已更新为 20240723
+ExportOptions.plist 包名已更新为 com.flutter.app.cgwallet
+正在更新资源文件...
+资源文件夹已存在，正在删除...
+资源文件夹更新成功...
+正在打包...
+一共 3 个任务需要处理
+正在处理第 1 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/CGpay
+没有找到config.json配置文件, 跳过处理...
+正在处理第 2 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/.DS_Store
+不是文件夹, 跳过处理...
+正在处理第 3 个任务 -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包
+加载配置文件成功: {'target': {'name': 'cgwallet100', 'flutter_name': 'wangfugui', 'title': '王富贵钱包', 'package': 'com.flutter.app.cgwallet', 'version': '6.1.1', 'team': 'N93BC5TDK8', 'profile': '20240723', 'signing': 'iPhone Distribution', 'build': ['test']}, 'project': {'path': '/Users/wangfugui/Documents/Projects/cgwallet', 'flutter_name': 'cgwallet100', 'title': 'CG钱包', 'package': 'com.cgwallet.app.cgwallet100', 'team': 'N93BC5TDK8', 'profile': '20200806dev', 'signing': 'iPhone Developer'}}
+删除文件夹成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在复制文件夹 /Users/wangfugui/Documents/Projects/cgwallet -> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+文件总数: 31190
+文件夹复制成功: /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100
+正在更新 YAML 文件...
+已更新 /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/pubspec.yaml 文件中的 name 和 version
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/main.dart
+正在更新 Dart 文件...
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/time.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/urls.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/config.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/app.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/key.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/config/shard.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/middlewares/middleware_index.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/middlewares/middlewares.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/models/web_view_arguments.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/models/models.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/lang.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/lang_keys.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/my_lang.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/key_en.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/lang/key_zh.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/common.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/my_colors.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/my_icons.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/my_styles.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/theme/theme.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/me.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/base.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/auth.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/activity.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/category.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/swap.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/transfer.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/market.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/qichat.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/api/api.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/routes/my_routes.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/routes/routes.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/routes/my_pages.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/global/init.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/global/user.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/global/global.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/widgets.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/my_assets.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/my_audios.dart
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/common/widgets/my_dialog.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/lib/views/views.dart
+正在更新 Dart 文件...
+dart 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/test/widget_test.dart
+正在更新 Android 文件...
+KT 文件修改成功 --> /Users/wangfugui/Documents/Projects/python/换皮打包/works/王富贵钱包/cgwallet100/android/app/src/main/kotlin/com/flutter/app/cgwallet/MainActivity.kt
+AndroidManifest.xml 包名已更新为 com.flutter.app.cgwallet
+build.gradle 包名已更新
+✅ Android 资源文件已更新 ....
+正在更新 IOS 文件...
+Info.plist 包名已更新为 com.flutter.app.cgwallet
+project.pbxproj 已更新为 20240723
+ExportOptions.plist 包名已更新为 com.flutter.app.cgwallet
+正在更新资源文件...
+资源文件夹已存在，正在删除...
+资源文件夹更新成功...
+正在打包...
