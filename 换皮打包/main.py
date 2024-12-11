@@ -7,27 +7,27 @@ from tqdm import tqdm
 
 
 class Target:
-    def __init__(self, name: str = None, flutter_name: str = None, title: str = None, package: str = None, version: str = None, team: str = None, profile: str = None, signing: str = None, build: list[str] = None):
-        self.name = name or ''
-        self.flutter_name = flutter_name or ''
-        self.title = title or ''
-        self.package = package or ''
-        self.version = version or ''
-        self.team = team or ''
-        self.profile = profile or ''
-        self.signing = signing or ''
+    def __init__(self, name: str = '', flutter_name: str = '', title: str = '', package: str = '', version: str = '', team: str = '', profile: str = '', signing: str = '', build: list[str] = ''):
+        self.name = name
+        self.flutter_name = flutter_name
+        self.title = title
+        self.package = package
+        self.version = version
+        self.team = team
+        self.profile = profile
+        self.signing = signing
         self.build = build or ['test']
 
 
 class Project:
-    def __init__(self, path: str = None, flutter_name: str = None, package: str = None, title: str = None, profile: str = None, signing: str = None, team: str = None):
-        self.path = path or ''
-        self.flutter_name = flutter_name or ''
-        self.package = package or ''
-        self.title = title or ''
-        self.profile = profile or ''
-        self.signing = signing or ''
-        self.team = team or ''
+    def __init__(self, path: str = '', flutter_name: str = '', package: str = '', title: str = '', profile: str = '', signing: str = '', team: str = ''):
+        self.path = path
+        self.flutter_name = flutter_name
+        self.package = package
+        self.title = title
+        self.profile = profile
+        self.signing = signing
+        self.team = team
 
 
 class BuildConfig:
@@ -104,57 +104,11 @@ async def build(path: Path, index: int):
         shutil.rmtree(project_path)
         consol.succful(f"删除文件夹成功: {project_path}")
 
-    # 复制项目
-    consol.log(f"正在复制文件夹 {config.project.path} -> {project_path}")
+    # 复制项目文件
+    copy_project(config.project.path, project_path)
 
-    files = list(Path(config.project.path).rglob('*'))
-    consol.log(f"文件总数: {len(files)}")
-    with tqdm(total=len(files), desc="Copying files") as pbar:
-        for item in files:
-            target_path = project_path / item.relative_to(config.project.path)
-
-            # 确保目标路径的父目录存在
-            if not target_path.parent.exists():
-                print(f"创建父目录: {target_path.parent}")
-                target_path.parent.mkdir(parents=True, exist_ok=True)
-
-            if item.is_dir():
-                target_path.mkdir(parents=True, exist_ok=True)
-            else:
-                shutil.copy2(item, target_path)
-            pbar.update(1)
-
-    # shutil.copytree(Path(config.project.path), project_path)
-    consol.succful(f"文件夹复制成功: {project_path}")
-
-    yaml_path = project_path / "pubspec.yaml"
-    with open(yaml_path, 'r') as file:
-        content = file.read()
-
-        match = re.search(r'version:\s*([^\s]+)', content)
-        if match and config.target.version == "":
-            config.target.version = match.group(1)
-        
-        match = re.search(r'name:\s*([^\s]+)', content)
-        if match:
-            config.project.flutter_name = match.group(1)
-
-    gradle_path = project_path / "android/app/build.gradle"
-    with open(gradle_path, 'r') as file:
-        content = file.read()
-
-        match = re.search(r'namespace\s*=\s*["\']([^"\']+)["\']', content)
-        if match:
-            config.project.package = match.group(1)
-
-    xml_path = project_path / "android/app/src/main/AndroidManifest.xml"
-    with open(xml_path, 'r') as file:
-        content = file.read()
-
-        match = re.search(r'<application[^>]*\sandroid:label=["\']([^"\']+)["\']', content)
-        if match:
-            config.project.title = match.group(1)
-
+    # 设置目标
+    set_target(project_path, config)
 
     # 更新项目名称 和 版本号
     update_yaml(project_path, config)
@@ -224,6 +178,59 @@ async def build(path: Path, index: int):
     shutil.rmtree(project_path)
 
     consol.log(f'✅✅✅ 第 {index} 个任务处理完毕 -> {path}')
+
+def copy_project(src_path: Path, dst_path: Path):
+    # 复制项目
+    consol.log(f"正在复制文件夹 {src_path} -> {dst_path}")
+
+    files = list(Path(src_path).rglob('*'))
+    consol.log(f"文件总数: {len(files)}")
+    with tqdm(total=len(files), desc="Copying files") as pbar:
+        for item in files:
+            target_path = dst_path / item.relative_to(src_path)
+
+            # 确保目标路径的父目录存在
+            if not target_path.parent.exists():
+                print(f"创建父目录: {target_path.parent}")
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+
+            if item.is_dir():
+                target_path.mkdir(parents=True, exist_ok=True)
+            else:
+                shutil.copy2(item, target_path)
+            pbar.update(1)
+
+    # shutil.copytree(Path(config.project.path), project_path)
+    consol.succful(f"文件夹复制成功: {dst_path}")
+
+def set_target(path: Path, config: BuildConfig):
+    yaml_path = path / "pubspec.yaml"
+    with open(yaml_path, 'r') as file:
+        content = file.read()
+
+        match = re.search(r'version:\s*([^\s]+)', content)
+        if match and config.target.version == "":
+            config.target.version = match.group(1)
+        
+        match = re.search(r'name:\s*([^\s]+)', content)
+        if match:
+            config.project.flutter_name = match.group(1)
+
+    gradle_path = path / "android/app/build.gradle"
+    with open(gradle_path, 'r') as file:
+        content = file.read()
+
+        match = re.search(r'namespace\s*=\s*["\']([^"\']+)["\']', content)
+        if match:
+            config.project.package = match.group(1)
+
+    xml_path = path / "android/app/src/main/AndroidManifest.xml"
+    with open(xml_path, 'r') as file:
+        content = file.read()
+
+        match = re.search(r'<application[^>]*\sandroid:label=["\']([^"\']+)["\']', content)
+        if match:
+            config.project.title = match.group(1)
 
 def update_assets(path: Path, config: BuildConfig):
     consol.log('正在更新资源文件...')
