@@ -7,27 +7,27 @@ from tqdm import tqdm
 
 
 class Target:
-    def __init__(self, name: str, flutter_name: str, title: str, package: str, version: str, team: str, profile: str, signing: str, build: list[str]):
-        self.name = name
-        self.flutter_name = flutter_name
-        self.title = title
-        self.package = package
-        self.version = version
-        self.team = team
-        self.profile = profile
-        self.signing = signing
-        self.build = build
+    def __init__(self, name: str = None, flutter_name: str = None, title: str = None, package: str = None, version: str = None, team: str = None, profile: str = None, signing: str = None, build: list[str] = None):
+        self.name = name or ''
+        self.flutter_name = flutter_name or ''
+        self.title = title or ''
+        self.package = package or ''
+        self.version = version or ''
+        self.team = team or ''
+        self.profile = profile or ''
+        self.signing = signing or ''
+        self.build = build or ['test']
 
 
 class Project:
-    def __init__(self, path: str, flutter_name: str, package: str, title: str, profile: str, signing: str, team: str):
-        self.path = path
-        self.flutter_name = flutter_name
-        self.package = package
-        self.title = title
-        self.profile = profile
-        self.signing = signing
-        self.team = team
+    def __init__(self, path: str = None, flutter_name: str = None, package: str = None, title: str = None, profile: str = None, signing: str = None, team: str = None):
+        self.path = path or ''
+        self.flutter_name = flutter_name or ''
+        self.package = package or ''
+        self.title = title or ''
+        self.profile = profile or ''
+        self.signing = signing or ''
+        self.team = team or ''
 
 
 class BuildConfig:
@@ -126,6 +126,35 @@ async def build(path: Path, index: int):
 
     # shutil.copytree(Path(config.project.path), project_path)
     consol.succful(f"文件夹复制成功: {project_path}")
+
+    yaml_path = project_path / "pubspec.yaml"
+    with open(yaml_path, 'r') as file:
+        content = file.read()
+
+        match = re.search(r'version:\s*([^\s]+)', content)
+        if match and config.target.version == "":
+            config.target.version = match.group(1)
+        
+        match = re.search(r'name:\s*([^\s]+)', content)
+        if match:
+            config.project.flutter_name = match.group(1)
+
+    gradle_path = project_path / "android/app/build.gradle"
+    with open(gradle_path, 'r') as file:
+        content = file.read()
+
+        match = re.search(r'namespace\s*=\s*["\']([^"\']+)["\']', content)
+        if match:
+            config.project.package = match.group(1)
+
+    xml_path = project_path / "android/app/src/main/AndroidManifest.xml"
+    with open(xml_path, 'r') as file:
+        content = file.read()
+
+        match = re.search(r'<application[^>]*\sandroid:label=["\']([^"\']+)["\']', content)
+        if match:
+            config.project.title = match.group(1)
+
 
     # 更新项目名称 和 版本号
     update_yaml(project_path, config)
