@@ -1,0 +1,20 @@
+{
+    "target": {
+        "name": "",
+        "flutter_name": "",
+        "title": "",
+        "package": "com.cgwallet.app.cgwallet100",
+        "version": "",
+        "team": "FKT2MS2R6W",
+        "profile": "cgpp",
+        "signing": "iPhone Distribution",
+        "build": ["test"],
+        "shorebird_id": "d5da101c-96f0-41fb-9383-6ffff89d205b"
+    },
+    "project": {
+        "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+        "team": "N93BC5TDK8",
+        "profile": "cgwalletAPNS_dev",
+        "signing": "iPhone Developer"
+    }
+}
