@@ -136,12 +136,12 @@ def build(path: Path):
 
         # 重命名 IPA 文件
         old_ipa_path = path / f'{ipa_old_name}.ipa'
-        new_ipa_path = path / f'{app_name}_{env}_{app_version}.ipa'
+        new_ipa_path = path / f'{app_name}_{env}_flutter_{app_version}.ipa'
         old_ipa_path.rename(new_ipa_path)
 
         shell("flutter build apk --release %s"  % (environment), cwd=project_path)
         old_apk_path =  "app/outputs/flutter-apk/app-release.apk"
-        new_apk_path = path / f'{app_name}_{env}_{app_version}.apk'
+        new_apk_path = path / f'{app_name}_{env}_flutter_{app_version}.apk'
 
         shutil.copy(build_path / old_apk_path, path / new_apk_path)
 

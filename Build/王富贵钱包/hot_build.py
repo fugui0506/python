@@ -6,6 +6,7 @@ import subprocess
 from tqdm import tqdm
 
 BUILD_ENVS: list[str] = ['test', 'rel', 'pre', 'grey']
+FLUTTER_VERSION: str = '3.27.1'
 
 class Config:
     def __init__(self, **kwargs):
@@ -112,16 +113,6 @@ def build(path: Path):
         print(f"正在处理 {env_index} / {len(build_envs)} 个环境 -> {env}")
         print()
 
-        environment = "--dart-define=ENVIRONMENT=%s" % env
-
-        shell("yes | shorebird release ios --no-codesign %s" % (environment), cwd=project_path)
-
-        archive_path = build_path / "ios/archive/Runner.xcarchive"
-
-        # 使用xcodebuild命令创建项目归档和导出IPA文件
-        shell(f"xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release archive -archivePath {archive_path} -destination 'generic/platform=iOS'", cwd=project_path)
-        shell(f"xcodebuild -exportArchive -archivePath {archive_path} -exportOptionsPlist {export_options_path} -exportPath {path}", cwd=project_path)
-
         app_name = config.target.title
         if app_name == "":
             app_name = config.project.title
@@ -134,14 +125,24 @@ def build(path: Path):
         if ipa_old_name == "":
             ipa_old_name = config.project.flutter_name
 
+        environment = "--dart-define=ENVIRONMENT=%s" % env
+
+        shell("yes '' | shorebird release ios --no-codesign %s --flutter-version=%s" % (environment, FLUTTER_VERSION), cwd=project_path)
+
+        archive_path = build_path / "ios/archive/Runner.xcarchive"
+
+        # 使用xcodebuild命令创建项目归档和导出IPA文件
+        shell(f"xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release archive -archivePath {archive_path} -destination 'generic/platform=iOS'", cwd=project_path)
+        shell(f"xcodebuild -exportArchive -archivePath {archive_path} -exportOptionsPlist {export_options_path} -exportPath {path}", cwd=project_path)
+
         # 重命名 IPA 文件
         old_ipa_path = path / f'{ipa_old_name}.ipa'
-        new_ipa_path = path / f'{app_name}_{env}_{app_version}.ipa'
+        new_ipa_path = path / f'{app_name}_{env}_hot_{app_version}.ipa'
         old_ipa_path.rename(new_ipa_path)
-
-        shell("yes | shorebird release android --artifact apk %s"  % (environment), cwd=project_path)
+        
+        shell("yes '' | shorebird release android --artifact apk %s --flutter-version=%s"  % (environment, FLUTTER_VERSION), cwd=project_path)
         old_apk_path =  "app/outputs/flutter-apk/app-release.apk"
-        new_apk_path = path / f'{app_name}_{env}_{app_version}.apk'
+        new_apk_path = path / f'{app_name}_{env}_hot_{app_version}.apk'
 
         shutil.copy(build_path / old_apk_path, path / new_apk_path)
 
@@ -561,4 +562,3 @@ def get_build_envs() -> list[str]:
 
 if __name__ == "__main__":
     main()
-

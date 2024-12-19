@@ -113,8 +113,8 @@ def build(path: Path):
 
         environment = "--dart-define=ENVIRONMENT=%s" % env
 
-        shell("yes '' | shorebird patch android %s" % (environment), cwd=project_path)
-        shell("yes '' | shorebird patch ios --no-codesign %s"  % (environment), cwd=project_path)
+        shell("yes '' | shorebird patch ios --no-codesign %s --verbose"  % (environment), cwd=project_path)
+        shell("yes '' | shorebird patch android %s --verbose" % (environment), cwd=project_path)
 
     summary_path = path / "DistributionSummary.plist"
     if summary_path.exists():
@@ -532,4 +532,3 @@ def get_build_envs() -> list[str]:
 
 if __name__ == "__main__":
     main()
-

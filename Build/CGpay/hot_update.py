@@ -113,8 +113,8 @@ def build(path: Path):
 
         environment = "--dart-define=ENVIRONMENT=%s" % env
 
-        shell("yes '' | shorebird patch android %s" % (environment), cwd=project_path)
-        shell("yes '' | shorebird patch ios --no-codesign %s"  % (environment), cwd=project_path)
+        shell("yes '' | shorebird patch ios --no-codesign %s --verbose"  % (environment), cwd=project_path)
+        shell("yes '' | shorebird patch android %s --verbose" % (environment), cwd=project_path)
 
     summary_path = path / "DistributionSummary.plist"
     if summary_path.exists():
@@ -472,8 +472,6 @@ def update_ios(path: Path, config: BuildConfig):
         shutil.copy(resource_path / "LaunchImage.imageset/LaunchImage@2x.png", ios_path / "Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png")
         shutil.copy(resource_path / "LaunchImage.imageset/LaunchImage@3x.png", ios_path / "Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png")
 
-import subprocess
-
 def shell(command, cwd=None):
     """
     辅助函数，用于运行Shell命令并打印其输出。
@@ -534,4 +532,3 @@ def get_build_envs() -> list[str]:
 
 if __name__ == "__main__":
     main()
-

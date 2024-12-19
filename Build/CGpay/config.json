@@ -9,7 +9,7 @@
         "profile": "cgpp",
         "signing": "iPhone Distribution",
         "build": ["test"],
-        "shorebird_id": "d5da101c-96f0-41fb-9383-6ffff89d205b"
+        "shorebird_id": "02aeddf3-f636-44c6-8683-e0dfc3a413b6"
     },
     "project": {
         "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
