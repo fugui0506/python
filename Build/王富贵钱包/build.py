@@ -82,8 +82,7 @@ def build(path: Path):
     update_yaml(project_path, config)
 
     # 更新 dart 文件
-    update_dart(project_path / "lib", config)
-    update_dart(project_path / "test", config)
+    update_dart(project_path, config)
 
     # 更新 Android 文件
     update_android(path, config)
@@ -182,6 +181,7 @@ def copy_project(src_path: Path, dst_path: Path):
     print(f"文件夹复制成功: {dst_path}")
 
 def set_config_project(path: Path, config: BuildConfig):
+
     yaml_path = path / "pubspec.yaml"
     with open(yaml_path, 'r') as file:
         content = file.read()
@@ -193,6 +193,9 @@ def set_config_project(path: Path, config: BuildConfig):
         match = re.search(r'name:\s*([^\s]+)', content)
         if match:
             config.project.flutter_name = match.group(1)
+    
+    if config.project.flutter_name == "":
+        exit("请在 pubspec.yaml 中配置 name")
 
     shorebird = path / "shorebird.yaml"
     with open(shorebird, 'r') as file:
@@ -201,14 +204,28 @@ def set_config_project(path: Path, config: BuildConfig):
         match = re.search(r'app_id:\s*([^\s]+)', content)
         if match:
             config.project.shorebird_id = match.group(1)
+    
+    if config.project.shorebird_id == "":
+        exit("请在 shorebird.yaml 中配置 app_id")
 
     gradle_path = path / "android/app/build.gradle"
     with open(gradle_path, 'r') as file:
         content = file.read()
 
-        match = re.search(r'namespace\s+"([\w.]+)"', content)
+        # 改进的正则表达式，匹配namespace 或 applicationId
+        match = re.search(r'(namespace\s*=\s*"([\w.]+)"|applicationId\s+"([\w.]+))', content)
+        
         if match:
-            config.project.package = match.group(1)
+            # 获取 namespace 或 applicationId 的值
+            package_name = match.group(2) if match.group(2) else match.group(3)
+            config.project.package = package_name
+            print(f"找到的包名: {config.project.package}")
+        else:
+            print("没有找到 namespace 或 applicationId 配置")
+
+    if config.project.package == "":
+        exit("请在 android/app/build.gradle 中配置 namespace")
+
 
     xml_path = path / "android/app/src/main/AndroidManifest.xml"
     with open(xml_path, 'r') as file:
@@ -217,6 +234,10 @@ def set_config_project(path: Path, config: BuildConfig):
         match = re.search(r'<application[^>]*\sandroid:label=["\']([^"\']+)["\']', content)
         if match:
             config.project.title = match.group(1)
+
+    if config.project.title == "": 
+        exit("请在 android/app/src/main/AndroidManifest.xml 中配置 application 标签的 label")
+
     print('项目配置成功... %s' % config.project.to_json())
 
 def update_assets(path: Path, config: BuildConfig):
@@ -265,56 +286,77 @@ def update_android(path: Path, config: BuildConfig):
     old_package_path = kotlin_path / Path(*config.project.package.split("."))
     new_package_path = kotlin_path / Path(*config.target.package.split("."))
 
-    if old_package_path.exists():
-        shutil.move(str(old_package_path), str(new_package_path))
+    # 检查目标路径是否已经存在，避免移动到子目录中
+    try:
+        if old_package_path.exists() and not new_package_path.exists():
+            print(f"正在移动包路径: {old_package_path} -> {new_package_path}")
+            shutil.move(str(old_package_path), str(new_package_path))
+        elif old_package_path.exists():
+            print(f"目标路径 {new_package_path} 已存在，跳过移动。")
+        else:
+            print(f"源路径 {old_package_path} 不存在，跳过移动。")
+    except Exception as e:
+        print(f"移动包路径时出错: {e}")
 
+    # 删除空目录
     remove_empty_dirs(kotlin_path)
 
+    # 处理 .kt 文件，替换包名
     for item in new_package_path.iterdir():
         if item.suffix == '.kt':
-            with item.open('r+', encoding='utf-8') as file:
-                content = file.read()
+            try:
+                with item.open('r+', encoding='utf-8') as file:
+                    content = file.read()
 
-                content = content.replace(config.project.package, config.target.package)
+                    # 替换包名
+                    content = content.replace(config.project.package, config.target.package)
 
-                file.seek(0)
-                file.write(content)
-                file.truncate()
+                    file.seek(0)
+                    file.write(content)
+                    file.truncate()
 
-
-            print(f"KT 文件修改成功 --> {item}")
+                print(f"KT 文件修改成功 --> {item}")
+            except UnicodeDecodeError as e:
+                print(f"无法解码文件 {item}，跳过该文件。错误: {e}")
+            except Exception as e:
+                print(f"修改文件 {item} 时出错: {e}")
 
     # 更新 AndroidManifest.xml
     manifest_path = android_path / "src/main/AndroidManifest.xml"
-    with open(manifest_path, "r+", encoding="utf-8") as file:
-        content = file.read()
+    try:
+        with open(manifest_path, "r+", encoding="utf-8") as file:
+            content = file.read()
 
-        if config.target.package != "":
-            content = content.replace(config.project.package, config.target.package)
+            if config.target.package != "":
+                content = content.replace(config.project.package, config.target.package)
 
-        if config.target.title != "":
-            pattern = r'android:label="(.*?)"'
-            replacement = f'android:label="{config.target.title}"'
-            content = re.sub(pattern, replacement, content)
+            if config.target.title != "":
+                pattern = r'android:label="(.*?)"'
+                replacement = f'android:label="{config.target.title}"'
+                content = re.sub(pattern, replacement, content)
 
-
-        file.seek(0) 
-        file.write(content)
-        file.truncate()
-        print(f"AndroidManifest.xml 包名已更新为 {config.target.package}")
+            file.seek(0)
+            file.write(content)
+            file.truncate()
+            print(f"AndroidManifest.xml 包名已更新为 {config.target.package}")
+    except Exception as e:
+        print(f"更新 AndroidManifest.xml 时出错: {e}")
 
     # 更新 build.gradle
     gradle_path = android_path / "build.gradle"
-    with open(gradle_path, "r+", encoding="utf-8") as file:
-        content = file.read()
+    try:
+        with open(gradle_path, "r+", encoding="utf-8") as file:
+            content = file.read()
 
-        if config.target.package != "":
-            content = content.replace(config.project.package, config.target.package)
+            if config.target.package != "":
+                content = content.replace(config.project.package, config.target.package)
 
-        file.seek(0) 
-        file.write(content)
-        file.truncate()
-        print("build.gradle 包名已更新")
+            file.seek(0)
+            file.write(content)
+            file.truncate()
+            print("build.gradle 包名已更新")
+    except Exception as e:
+        print(f"更新 build.gradle 时出错: {e}")
 
     # 更新资源文件
     resource_path = path / "resource/android"
@@ -323,33 +365,39 @@ def update_android(path: Path, config: BuildConfig):
         launch_image = "launch_image.png"
         launch_image_path = android_path / "src/main/res/mipmap"
         launch_image_path.mkdir(parents=True, exist_ok=True)
-        shutil.copy(resource_path / "mipmap" / launch_image, launch_image_path / launch_image)
+        try:
+            shutil.copy(resource_path / "mipmap" / launch_image, launch_image_path / launch_image)
+            print(f"资源文件 {launch_image} 已复制到 {launch_image_path}")
+        except FileNotFoundError as e:
+            print(f"找不到资源文件 {launch_image}，跳过复制。错误: {e}")
+        except Exception as e:
+            print(f"复制资源文件 {launch_image} 时出错: {e}")
 
         ic_launcher = "ic_launcher.png"
 
-        hdpi_path = android_path / "src/main/res/mipmap-hdpi"
-        ldpi_path = android_path / "src/main/res/mipmap-ldpi"
-        mdpi_path = android_path / "src/main/res/mipmap-mdpi"
-        xhdpi_path = android_path / "src/main/res/mipmap-xhdpi"
-        xxhdpi_path = android_path / "src/main/res/mipmap-xxhdpi"
-        xxxhdpi_path = android_path / "src/main/res/mipmap-xxxhdpi"
+        mipmap_paths = {
+            "hdpi": android_path / "src/main/res/mipmap-hdpi",
+            "ldpi": android_path / "src/main/res/mipmap-ldpi",
+            "mdpi": android_path / "src/main/res/mipmap-mdpi",
+            "xhdpi": android_path / "src/main/res/mipmap-xhdpi",
+            "xxhdpi": android_path / "src/main/res/mipmap-xxhdpi",
+            "xxxhdpi": android_path / "src/main/res/mipmap-xxxhdpi"
+        }
 
-        hdpi_path.mkdir(parents=True, exist_ok=True)
-        ldpi_path.mkdir(parents=True, exist_ok=True)
-        mdpi_path.mkdir(parents=True, exist_ok=True)
-        xhdpi_path.mkdir(parents=True, exist_ok=True)
-        xxhdpi_path.mkdir(parents=True, exist_ok=True)
-        xxxhdpi_path.mkdir(parents=True, exist_ok=True)
-
-
-        shutil.copy(resource_path / "mipmap-hdpi" / ic_launcher, hdpi_path / ic_launcher)
-        shutil.copy(resource_path / "mipmap-ldpi" / ic_launcher, ldpi_path / ic_launcher)
-        shutil.copy(resource_path / "mipmap-mdpi" / ic_launcher, mdpi_path / ic_launcher)
-        shutil.copy(resource_path / "mipmap-xhdpi" / ic_launcher, xhdpi_path / ic_launcher)
-        shutil.copy(resource_path / "mipmap-xxhdpi" / ic_launcher, xxhdpi_path / ic_launcher)
-        shutil.copy(resource_path / "mipmap-xxxhdpi" / ic_launcher, xxxhdpi_path / ic_launcher)
+        # 创建目录并复制资源文件
+        for density, path in mipmap_paths.items():
+            path.mkdir(parents=True, exist_ok=True)
+            try:
+                shutil.copy(resource_path / f"mipmap-{density}" / ic_launcher, path / ic_launcher)
+                print(f"资源文件 {ic_launcher} 已复制到 {path}")
+            except FileNotFoundError as e:
+                print(f"找不到资源文件 {ic_launcher} 在 {density}，跳过复制。错误: {e}")
+            except Exception as e:
+                print(f"复制资源文件 {ic_launcher} 到 {path} 时出错: {e}")
 
         print("✅ Android 资源文件已更新 ....")
+    else:
+        print(f"资源文件路径 {resource_path} 不存在，跳过资源文件更新。")
 
 def remove_empty_dirs(path: Path):
     for child in path.iterdir():
@@ -363,7 +411,8 @@ def remove_empty_dirs(path: Path):
 def update_dart(path: Path, config: BuildConfig):
     """
     更新 Dart 文件中的 package、title 和 flutter_name。
-    遍历指定路径下的所有 Dart 文件，并进行内容替换。
+    遍历指定路径下的所有文件，并进行内容替换。
+    如果文件无法解码则跳过。
     """
     print(f'正在更新 Dart 文件: {path.resolve()}')
 
@@ -371,30 +420,38 @@ def update_dart(path: Path, config: BuildConfig):
         print(f'路径不存在或不是文件夹: {path}')
         return
 
-    # 递归获取所有 .dart 文件
-    for dart_file in path.rglob('*.dart'):
-        print(f'正在处理 Dart 文件 -> {dart_file.resolve()}')
+    for dart_file in path.rglob('*'):
+        print(f'正在处理文件 -> {dart_file.resolve()}')
 
-        with dart_file.open('r+', encoding='utf-8') as file:
-            content = file.read()
+        # 只处理文件，跳过文件夹
+        if dart_file.is_file():
+            try:
+                with dart_file.open('r+', encoding='utf-8') as file:
+                    content = file.read()
 
-            # 替换包名
-            if config.target.package != "":
-                content = content.replace(config.project.package, config.target.package)
+                    # 替换包名
+                    if config.target.package != "":
+                        content = content.replace(config.project.package, config.target.package)
 
-            # 替换标题
-            if config.target.title != "":
-                content = content.replace(config.project.title, config.target.title)
+                    # 替换标题
+                    if config.target.title != "":
+                        content = content.replace(config.project.title, config.target.title)
 
-            # 替换 Flutter 名称
-            if config.target.flutter_name != "":
-                content = content.replace(config.project.flutter_name, config.target.flutter_name)
+                    # 替换 Flutter 名称
+                    if config.target.flutter_name != "":
+                        content = content.replace(config.project.flutter_name, config.target.flutter_name)
 
-            file.seek(0) 
-            file.write(content)
-            file.truncate()
+                    file.seek(0) 
+                    file.write(content)
+                    file.truncate()
 
-            print(f'Dart 文件修改成功 --> {dart_file.resolve()}')
+                    print(f'文件修改成功 --> {dart_file.resolve()}')
+            
+            # 如果文件无法解码为utf-8，则跳过该文件
+            except UnicodeDecodeError as e:
+                print(f"跳过文件 {dart_file.resolve()}，无法解码为 UTF-8: {e}")
+            except Exception as e:
+                print(f"处理文件 {dart_file.resolve()} 时发生错误: {e}")
 
 def update_ios(path: Path, config: BuildConfig):
     print('正在更新 IOS 文件...')

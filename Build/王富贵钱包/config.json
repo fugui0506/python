@@ -1,9 +1,9 @@
 {
     "target": {
-        "name": "",
-        "flutter_name": "",
-        "title": "",
-        "package": "",
+        "name": "my_flutter_basic",
+        "flutter_name": "my_flutter_basic",
+        "title": "我的框架",
+        "package": "com.project.my.flutter.basic",
         "version": "",
         "team": "N93BC5TDK8",
         "profile": "20240723",

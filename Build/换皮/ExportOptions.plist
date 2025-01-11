@@ -8,7 +8,7 @@
 	<string>release-testing</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.flutter.app.cgwallet</key>
+		<key>com.project.my.flutter.basic</key>
 		<string>20240723</string>
 	</dict>
 	<key>signingCertificate</key>
