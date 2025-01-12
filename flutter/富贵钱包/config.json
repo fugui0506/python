@@ -1,0 +1,19 @@
+{
+    "target": {
+        "name": "",
+        "flutter_name": "",
+        "title": "富贵钱包",
+        "package": "com.cgwallet.app.cgwallet100",
+        "version": "",
+        "team": "FKT2MS2R6W",
+        "profile": "cgpp",
+        "signing": "iPhone Distribution",
+        "shorebird_id": "02aeddf3-f636-44c6-8683-e0dfc3a413b6"
+    },
+    "project": {
+        "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+        "team": "N93BC5TDK8",
+        "profile": "cgwalletAPNS_dev",
+        "signing": "iPhone Developer"
+    }
+}
