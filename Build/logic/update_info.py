@@ -18,15 +18,15 @@ def _common(path: Path, config: BuildConfig):
             content = file.read()
 
             # 替换包名
-            if config.target.package != "":
+            if config.target.package != "" and config.project.package != "" and config.target.package != config.project.package:
                 content = content.replace(config.project.package, config.target.package)
 
             # 替换标题
-            if config.target.title != "":
+            if config.target.title != "" and config.project.title != "" and config.target.title != config.project.title:
                 content = content.replace(config.project.title, config.target.title)
 
             # 替换 Flutter 名称
-            if config.target.flutter_name != "":
+            if config.target.flutter_name != "" and config.project.flutter_name != "" and config.target.flutter_name != config.project.flutter_name:
                 content = content.replace(config.project.flutter_name, config.target.flutter_name)
 
             file.seek(0) 

@@ -14,13 +14,13 @@ def run(path: Path, config: BuildConfig, resource: Path):
     with open(pbxproj_path, "r+", encoding="utf-8") as file:
         content = file.read()
         
-        if config.target.profile != "":
+        if config.target.profile != "" and config.project.profile != "" and config.target.profile != config.project.profile:
             content = content.replace(config.project.profile, config.target.profile)
         
-        if config.target.team != "":
+        if config.target.team != "" and config.project.team != "" and config.target.team != config.project.team:
             content = content.replace(config.project.team, config.target.team)
 
-        if config.target.signing != "":
+        if config.target.signing != "" and config.project.signing != "" and config.target.signing != config.project.signing:
             content = content.replace(config.project.signing, config.target.signing)
         
         file.seek(0) 
