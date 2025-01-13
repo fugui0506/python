@@ -40,4 +40,5 @@ def run(command, cwd=None):
         raise subprocess.CalledProcessError(process.returncode, command, output="".join(stderr_lines))
 
     print()
+    consol.succful("命令运行完成: %s" % command)
     consol.log("-" * 120)
