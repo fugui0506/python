@@ -1,57 +1,28 @@
-
 from pathlib import Path
 import sys
 
-import inquirer
-
+# 添加项目根路径到 sys.path
 project_root = Path(__file__).resolve().parents[1]
 sys.path.append(str(project_root))
 
 from utils import consol
-from flutter.logic import build
+from flutter.logic import build, get_work_path
 
 def main():
     print()
     consol.log('开始运行脚本...')
 
+    # 定义工作目录路径
     works_path = Path(__file__).resolve().parent / 'works'
 
-    if not works_path.exists():
-        consol.error(f"工作目录不存在：{works_path}")
-        return
+    # 获取用户选择的工作目录
+    work_path = get_work_path.run(works_path)
 
-    # 工作目录名称和路径
-    work_path_mapping = {}
-
-    # 获取父级目录的所有文件
-    for work in works_path.glob('*'):
-        if work.is_dir():
-            work_path_mapping[work.name] = work
-        
-    # 用户提示信息中的显示名称
-    work_path_names = list(work_path_mapping.keys())
-    
-    # 提问用户选择工作目录
-    questions = [
-        inquirer.List(
-            'work_path',
-            message="请选择工作目录",
-            choices=work_path_names,
-            default=work_path_names[0]
-        )
-    ]
-
-    answers = inquirer.prompt(questions)
-    selected = answers['work_path']
-    
-    # 获取对应的工作目录
-    work_path = work_path_mapping.get(selected, work_path_names[0])
-    
     # 打印用户选择工作目录
-    consol.log(f"你选择的工作目录是: {selected}，对应的目录是: {work_path}")
+    consol.log(f"你选择的工作目录是: {work_path.name}，对应的路径是: {work_path}")
     print()
 
-    print(work_path_mapping)
+    # 调用 build 脚本
     build.run(work_path)
 
 if __name__ == "__main__":

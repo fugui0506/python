@@ -9,6 +9,7 @@ import flutter.logic.copy_project as copy_project
 import flutter.logic.update_plist as update_plist
 import flutter.logic.build as build
 import flutter.logic.get_build_type as get_build_type
+import flutter.logic.get_work_path as get_work_path
 
 __all__ = [
     "get_build_envs",
@@ -22,4 +23,5 @@ __all__ = [
     "update_plist",
     "build",
     "get_build_type",
+    "get_work_path"
 ]

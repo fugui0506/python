@@ -65,3 +65,183 @@ ExportOptions.plist 包名已更新为 com.cgwallet.app.cgwallet100
 project.pbxproj 已更新为 cgpp
 发生错误: 'NoneType' object is not subscriptable
 ✅ 已清理项目目录: /Users/wangfugui/Documents/python/flutter/works/CGpay/project
+开始运行脚本...
+开始运行脚本...
+开始运行脚本...
+你选择的工作目录是: CGpay，对应的路径是: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay
+正在读取文件的内容 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/config.json
+文件的内容: {
+    "target": {
+        "name": "",
+        "flutter_name": "",
+        "title": "",
+        "package": "com.cgwallet.app.cgwallet100",
+        "version": "",
+        "team": "FKT2MS2R6W",
+        "profile": "cgpp",
+        "signing": "iPhone Distribution",
+        "shorebird_id": "02aeddf3-f636-44c6-8683-e0dfc3a413b6"
+    },
+    "project": {
+        "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+        "team": "N93BC5TDK8",
+        "profile": "cgwalletAPNS_dev",
+        "signing": "iPhone Developer"
+    }
+}
+配置加载完成: {
+    "name": "",
+    "flutter_name": "",
+    "title": "",
+    "package": "",
+    "version": "",
+    "team": "N93BC5TDK8",
+    "profile": "cgwalletAPNS_dev",
+    "signing": "iPhone Developer",
+    "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+    "shorebird_id": ""
+}
+正在复制文件: /Users/wangfugui/Documents/Projects/wallet-flutter-app => /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+检测到 .gitignore 文件，按规则过滤：/Users/wangfugui/Documents/Projects/wallet-flutter-app/.gitignore
+已完成从 /Users/wangfugui/Documents/Projects/wallet-flutter-app 到 /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project 的复制
+========================================================================================================================
+运行命令: flutter clean
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+ExportOptions.plist 包名已更新为 com.cgwallet.app.cgwallet100
+项目配置成功... {
+    "name": "",
+    "flutter_name": "cgwallet",
+    "title": "CGpay",
+    "package": "com.cgwallet.app.cgwallet",
+    "version": "2.2.4",
+    "team": "N93BC5TDK8",
+    "profile": "cgwalletAPNS_dev",
+    "signing": "iPhone Developer",
+    "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+    "shorebird_id": "1058f810-b576-4cc1-a2b7-4a240dffa3b3"
+}
+正在更新所有文件里的项目信息: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+正在更新 YAML 文件...
+已更新YAML文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/pubspec.yaml
+已更新ShoreBird文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/shorebird.yaml
+正在更新资源文件 /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/resource/assets -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/assets
+资源文件夹更新成功...
+正在更新 Android 文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/android/app
+正在移动包路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/android/app/src/main/kotlin/com/cgwallet/app/cgwallet -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/android/app/src/main/kotlin/com/cgwallet/app/cgwallet100
+资源文件路径 /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/resource/android 不存在，跳过资源文件更新。
+正在更新 IOS 文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/ios
+project.pbxproj 已更新为 cgpp
+你选择的打包环境是: 正式环境，对应的环境值是: rel
+你选择的打包环境是: 标准 Flutter 包，对应的类型是: BuildType.FLUTTER
+开始构建环境: rel
+========================================================================================================================
+运行命令: flutter pub get
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+========================================================================================================================
+运行命令: pod install
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/ios
+========================================================================================================================
+========================================================================================================================
+运行命令: flutter build ios --release --no-codesign --dart-define=ENVIRONMENT=rel
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+✅ 已清理项目目录: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+开始运行脚本...
+工作目录不存在：/Users/wangfugui/Documents/Projects/python/flutter/works
+开始运行脚本...
+你选择的工作目录是: CGpay，对应的路径是: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay
+正在读取文件的内容 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/config.json
+文件的内容: {
+    "target": {
+        "name": "",
+        "flutter_name": "",
+        "title": "",
+        "package": "com.cgwallet.app.cgwallet100",
+        "version": "",
+        "team": "FKT2MS2R6W",
+        "profile": "cgpp",
+        "signing": "iPhone Distribution",
+        "shorebird_id": "02aeddf3-f636-44c6-8683-e0dfc3a413b6"
+    },
+    "project": {
+        "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+        "team": "N93BC5TDK8",
+        "profile": "cgwalletAPNS_dev",
+        "signing": "iPhone Developer"
+    }
+}
+配置加载完成: {
+    "name": "",
+    "flutter_name": "",
+    "title": "",
+    "package": "",
+    "version": "",
+    "team": "N93BC5TDK8",
+    "profile": "cgwalletAPNS_dev",
+    "signing": "iPhone Developer",
+    "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+    "shorebird_id": ""
+}
+正在复制文件: /Users/wangfugui/Documents/Projects/wallet-flutter-app => /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+检测到 .gitignore 文件，按规则过滤：/Users/wangfugui/Documents/Projects/wallet-flutter-app/.gitignore
+已完成从 /Users/wangfugui/Documents/Projects/wallet-flutter-app 到 /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project 的复制
+========================================================================================================================
+运行命令: flutter clean
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+ExportOptions.plist 包名已更新为 com.cgwallet.app.cgwallet100
+项目配置成功... {
+    "name": "",
+    "flutter_name": "cgwallet",
+    "title": "CGpay",
+    "package": "com.cgwallet.app.cgwallet",
+    "version": "2.2.4",
+    "team": "N93BC5TDK8",
+    "profile": "cgwalletAPNS_dev",
+    "signing": "iPhone Developer",
+    "path": "/Users/wangfugui/Documents/Projects/wallet-flutter-app",
+    "shorebird_id": "1058f810-b576-4cc1-a2b7-4a240dffa3b3"
+}
+正在更新所有文件里的项目信息: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+正在更新 YAML 文件...
+已更新YAML文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/pubspec.yaml
+已更新ShoreBird文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/shorebird.yaml
+正在更新资源文件 /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/resource/assets -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/assets
+资源文件夹更新成功...
+正在更新 Android 文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/android/app
+正在移动包路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/android/app/src/main/kotlin/com/cgwallet/app/cgwallet -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/android/app/src/main/kotlin/com/cgwallet/app/cgwallet100
+资源文件路径 /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/resource/android 不存在，跳过资源文件更新。
+正在更新 IOS 文件 -> /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/ios
+project.pbxproj 已更新为 cgpp
+你选择的打包环境是: 正式环境，对应的环境值是: rel
+你选择的打包环境是: 标准 Flutter 包，对应的类型是: BuildType.FLUTTER
+开始构建环境: rel
+========================================================================================================================
+运行命令: flutter pub get
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+========================================================================================================================
+运行命令: pod install
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/ios
+========================================================================================================================
+========================================================================================================================
+运行命令: flutter build ios --release --no-codesign --dart-define=ENVIRONMENT=rel
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+========================================================================================================================
+运行命令: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release archive -archivePath /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/build/ios/archive/Runner.xcarchive -destination 'generic/platform=iOS'
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+========================================================================================================================
+运行命令: xcodebuild -exportArchive -archivePath /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project/build/ios/archive/Runner.xcarchive -exportOptionsPlist /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/ExportOptions.plist -exportPath /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+✅ IPA 文件重命名完成: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/CGpay_rel_flutter_2.2.4.ipa
+========================================================================================================================
+运行命令: flutter build apk --release --dart-define=ENVIRONMENT=rel
+命令路径: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
+========================================================================================================================
+✅ APK 文件重命名完成: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/CGpay_rel_flutter_2.2.4.apk
+✅ 全部构建完成!
+✅ 已清理项目目录: /Users/wangfugui/Documents/Projects/python/flutter/works/CGpay/project
