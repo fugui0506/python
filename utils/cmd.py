@@ -7,7 +7,7 @@ def run(command, cwd=None):
     辅助函数，用于运行Shell命令并打印其输出。
     如果命令执行失败，抛出异常并打印错误信息。
     """
-    consol.log("=" * 120)
+    consol.log("-" * 120)
     consol.log("运行命令: %s" % command)
     consol.log("命令路径: %s" % cwd)
     print()
@@ -40,4 +40,4 @@ def run(command, cwd=None):
         raise subprocess.CalledProcessError(process.returncode, command, output="".join(stderr_lines))
 
     print()
-    consol.log("=" * 120)
+    consol.log("-" * 120)
