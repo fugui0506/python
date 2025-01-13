@@ -16,9 +16,7 @@ from flutter.logic import (
 from flutter.models.config import BuildConfig
 from flutter.models.build_type import BuildType
 
-BUILD_ENVS: list[str] = ['test', 'rel', 'pre', 'grey']
 FLUTTER_VERSION: str = '3.27.1'
-
 
 def _validate_paths(works_path: Path) -> tuple[Path, Path]:
     """验证配置文件路径是否存在"""
@@ -60,7 +58,7 @@ def _build_ios(project_path: Path, works_path: Path, config: BuildConfig, enviro
         archive_path = project_path / "build/ios/archive/Runner.xcarchive"
         cmd.run(f"xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release archive -archivePath {archive_path} -destination 'generic/platform=iOS'", cwd=project_path)
         cmd.run(f"xcodebuild -exportArchive -archivePath {archive_path} -exportOptionsPlist {works_path / 'ExportOptions.plist'} -exportPath {works_path}", cwd=project_path)
-        _rename_output_file(works_path, project_path, config, "ipa", environment.split('=')[-1])
+        _rename_output_file(works_path, project_path, config, "ipa", environment.split('=')[-1], build_type)
 
 
 def _build_android(project_path: Path, works_path: Path, config: BuildConfig, environment: str, build_type: BuildType):
@@ -73,17 +71,18 @@ def _build_android(project_path: Path, works_path: Path, config: BuildConfig, en
         cmd.run(f"yes '' | shorebird patch android {environment} --verbose", cwd=project_path)
 
     if build_type in [BuildType.FLUTTER, BuildType.HOT]:
-        _rename_output_file(works_path, project_path, config, "apk", environment.split('=')[-1])
+        _rename_output_file(works_path, project_path, config, "apk", environment.split('=')[-1], build_type)
 
 
-def _rename_output_file(works_path: Path, project_path: Path, config: BuildConfig, extension: str, environment: str):
+def _rename_output_file(works_path: Path, project_path: Path, config: BuildConfig, extension: str, environment: str, build_type: BuildType):
     """重命名输出文件"""
     app_name = config.target.title or config.project.title
     app_version = config.target.version or config.project.version
     flutter_name = config.target.flutter_name or config.project.flutter_name
+    build_name = build_name = build_type.name.lower()
 
     old_file = works_path / f"{flutter_name}.{extension}"
-    new_file = works_path / f"{app_name}_{environment}_flutter_{app_version}.{extension}"
+    new_file = works_path / f"{app_name}_{environment}_{build_name}_{app_version}.{extension}"
 
     if old_file.exists():
         old_file.rename(new_file)
