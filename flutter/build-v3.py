@@ -20,6 +20,7 @@ def main():
         consol.error(f"工作目录不存在：{works_path}")
         return
 
+    # 工作目录名称和路径
     work_path_mapping = {}
 
     # 获取父级目录的所有文件
@@ -30,7 +31,7 @@ def main():
     # 用户提示信息中的显示名称
     work_path_names = list(work_path_mapping.keys())
     
-    # 提问用户选择打包环境
+    # 提问用户选择工作目录
     questions = [
         inquirer.List(
             'work_path',
@@ -43,10 +44,10 @@ def main():
     answers = inquirer.prompt(questions)
     selected = answers['work_path']
     
-    # 获取对应的环境值
+    # 获取对应的工作目录
     work_path = work_path_mapping.get(selected, work_path_names[0])
     
-    # 打印用户选择的环境
+    # 打印用户选择工作目录
     consol.log(f"你选择的工作目录是: {selected}，对应的目录是: {work_path}")
     print()
 
