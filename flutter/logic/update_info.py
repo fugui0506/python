@@ -13,12 +13,12 @@ def run(path: Path, config: BuildConfig):
     for dart_file in path.rglob('*'):
         # 检查是否属于需要跳过的文件夹
         if any(folder in dart_file.parts for folder in SKIPPED_FOLDERS):
-            consol.log(f'跳过文件或文件夹 -> {dart_file.resolve()}')
+            print(f'跳过文件或文件夹 -> {dart_file.resolve()}')
             continue
 
         # 如果是文件，则处理
         if dart_file.is_file():
-            consol.log(f'正在处理文件 -> {dart_file.resolve()}')
+            print(f'正在处理文件 -> {dart_file.resolve()}')
             _common(dart_file, config)
 
 def _common(path: Path, config: BuildConfig):
@@ -42,9 +42,9 @@ def _common(path: Path, config: BuildConfig):
             file.write(content)
             file.truncate()
 
-            consol.succful(f'文件修改成功 --> {path.resolve()}')
+            print(f'文件修改成功 --> {path.resolve()}')
 
     except UnicodeDecodeError as e:
-        consol.error(f"跳过文件 {path.resolve()}，无法解码为 UTF-8: {e}")
+        print(f"跳过文件 {path.resolve()}，无法解码为 UTF-8: {e}")
     except Exception as e:
-        consol.error(f"处理文件 {path.resolve()} 时发生错误: {e}")
+        print(f"处理文件 {path.resolve()} 时发生错误: {e}")

@@ -8,7 +8,7 @@ def read(path: str):
     with open(path) as file:
         data = json.loads(file.read().strip())
 
-    consol.succful(f"文件的内容: {data}")
+    consol.succful(f"文件的内容: {dumps(data)}")
     return data
 
 def dumps(data: dict) -> str:

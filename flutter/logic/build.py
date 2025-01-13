@@ -103,7 +103,7 @@ def _clean_up(works_path: Path, project_path: Path):
             
     if project_path.exists():
         shutil.rmtree(project_path)
-        consol.succful(f"已清理项目目录: {project_path}")
+        consol.succful(f"✅ 已清理项目目录: {project_path}")
 
 
 def run(works_path: Path):
@@ -114,7 +114,7 @@ def run(works_path: Path):
 
         # 加载配置
         config = BuildConfig.from_json(json.read(json_path))
-        consol.succful(f"配置加载完成: {config.project.to_json()}")
+        consol.succful(f"配置加载完成: {json.dumps(config.project.to_json())}")
 
         # 准备项目
         project_path = _prepare_project(works_path, config)

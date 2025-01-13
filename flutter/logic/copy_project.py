@@ -47,7 +47,7 @@ def run(src_path: Path, dst_path: Path):
 
                 # 复制文件
                 shutil.copy2(file_path, target_path)
-                consol.succful(f"已复制文件: {file_path} -> {target_path}")
+                print(f"已复制文件: {file_path} -> {target_path}")
 
     consol.succful(f"已完成从 {src_path} 到 {dst_path} 的复制")
 
