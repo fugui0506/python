@@ -41,13 +41,13 @@ def main():
     ]
 
     answers = inquirer.prompt(questions)
-    selected_build_env_name = answers['work_path']
+    selected = answers['work_path']
     
     # 获取对应的环境值
-    work_path = work_path_mapping.get(selected_build_env_name, work_path_names[0])
+    work_path = work_path_mapping.get(selected, work_path_names[0])
     
     # 打印用户选择的环境
-    consol.log(f"你选择的工作目录是: {selected_build_env_name}，对应的目录是: {work_path}")
+    consol.log(f"你选择的工作目录是: {selected}，对应的目录是: {work_path}")
     print()
 
     print(work_path_mapping)
