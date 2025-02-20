@@ -1,0 +1,166 @@
+name: cgwallet
+description: "A new Flutter project."
+publish_to: 'none'
+version: 2.2.4
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 国际化
+  flutter_localizations:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: 1.0.6
+
+  # GetX 框架
+  get: 4.6.6
+
+  # 本地储存
+  flutter_secure_storage: 9.2.2
+
+  # 网络请求
+  dio: 5.4.3+1
+
+  # ws 模块
+  web_socket_channel: 3.0.0
+
+  # 加密
+  encrypt: 5.0.3
+
+  # 包信息
+  package_info_plus: 8.0.2
+
+  # 设备信息
+  device_info_plus: 10.0.1
+
+  # 动态获取权限
+  permission_handler: 10.0.1
+
+  # svg
+  flutter_svg: 2.0.10+1
+
+  # lottie
+  lottie: 3.1.2
+
+  # webview
+  webview_flutter: 4.8.0
+
+  # 音频/音效
+  audioplayers: 6.0.0
+
+  # 网易行为式验证码
+  captcha_plugin_flutter:
+    path: ./plugins/captcha_plugin_flutter
+
+  # 网易人脸识别
+  alive_flutter_plugin:
+    path: ./plugins/alive_flutter_plugin
+
+  # 深度链接
+  app_links: 6.4.0
+
+  # 扫码
+  mobile_scanner: 5.1.1
+
+  # 相册图片选择
+  image_picker: 1.1.2
+
+  # 获取外部路径
+  path_provider: 2.1.3
+
+  # 键盘隐藏
+  flutter_keyboard_visibility: 6.0.0
+
+  # 缓存
+  flutter_cache_manager: 3.4.0
+
+  # 下拉刷新
+  pull_to_refresh: 2.0.0
+
+  # 滑动拓展
+  flutter_slidable: 3.1.1
+
+  # 滑动列表
+  alphabet_list_view: 1.1.0
+
+  # 网络监听
+  # connectivity_plus: 6.0.5
+
+  # 外部浏览器
+  url_launcher: 6.3.0
+
+  # 富文本
+  flutter_html: 3.0.0-beta.2
+
+  # 日期选择器
+  flutter_datetime_picker_plus: 2.2.0
+
+  # 二维码生成
+  qr_flutter: 4.1.0
+
+  # uuid
+  uuid: 4.5.1
+
+  # 极光推送
+  jpush_flutter:
+    path: ./plugins/jpush_flutter
+
+  # 获取设备信息
+  my_device_info:
+    path: ./plugins/my_device_info
+
+  # 视频播放
+  video_player: 2.9.2
+
+  # 播放器皮肤
+  chewie: 1.8.5
+
+  # 文件选择器
+  file_picker: 8.0.5
+
+  # 热更新
+  shorebird_code_push: 1.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: 4.0.0
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/images/dark/
+    - assets/images/light/
+    - assets/svg/
+    - assets/svg/dark/
+    - assets/svg/light/
+    - assets/lottie/
+    - assets/lottie/dark/
+    - assets/lottie/light/
+    - assets/audios/
+    - shorebird.yaml
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700

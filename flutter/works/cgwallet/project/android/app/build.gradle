@@ -1,0 +1,105 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def keystorePropertiesFile = file("/Users/android-release-key.properties")
+def properties = new Properties()
+properties.load(new FileInputStream(keystorePropertiesFile))
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+localProperties.load(new FileInputStream(localPropertiesFile))
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+android {
+    namespace "com.cgwallet.app.cgwallet100"
+    compileSdk flutter.compileSdkVersion
+    ndkVersion "26.1.10909125"
+
+    signingConfigs {
+        release {
+            storeFile file(properties['storeFile'])
+            keyAlias properties['keyAlias']
+            keyPassword properties['keyPassword']
+            storePassword properties['storePassword']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = 11
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.cgwallet.app.cgwallet100"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdkVersion 24
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+
+        manifestPlaceholders = [
+            JPUSH_PKGNAME: applicationId,
+            JPUSH_APPKEY : "9063f684484f2bf6833785c2",
+            JPUSH_CHANNEL: "developer-default",
+
+            // XIAOMI_APPID : "2882303761520349762",
+            // XIAOMI_APPKEY : "5152034916762",
+        ]
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation 'com.google.mlkit:barcode-scanning:17.0.0'
+    implementation 'com.google.protobuf:protobuf-java:3.19.6'
+
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+
+    // 接入小米厂商
+    // implementation 'cn.jiguang.sdk.plugin:xiaomi:4.7.2'
+
+    // 起聊 SDK
+    implementation 'com.github.QiSDK:QiChatSDK_Android:1.6.9'
+}

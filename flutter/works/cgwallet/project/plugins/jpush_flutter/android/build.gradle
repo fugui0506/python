@@ -1,0 +1,54 @@
+group 'com.jiguang.jpush'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '2.0.0'
+    ext.kotlin_coroutines = '1.3.1'
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.5.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace "com.jiguang.jpush"
+    compileSdkVersion 34
+    defaultConfig {
+        minSdkVersion 24
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    kotlinOptions {
+        jvmTarget = 11
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    implementation 'cn.jiguang.sdk:jpush:5.5.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+}

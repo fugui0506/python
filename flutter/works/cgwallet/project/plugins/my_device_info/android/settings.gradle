@@ -1,0 +1,3 @@
+package my_device_info.android
+
+rootProject.name = 'my_device_info'
